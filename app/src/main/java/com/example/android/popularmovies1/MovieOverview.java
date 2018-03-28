@@ -21,9 +21,9 @@ import java.util.List;
 
 public class MovieOverview extends AppCompatActivity {
 
-    //Adapter for the list of stories
-    private MovieAdapter movieAdapter;
-    private List<Movie> movies = new ArrayList<>();
+    //Adapter for the list of movies
+    private static MovieAdapter movieAdapter;
+    private static ArrayList<Movie> movies = new ArrayList<>();
 
 
     @Override
@@ -31,11 +31,10 @@ public class MovieOverview extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_movie_overview);
 
-        makeMovieQuery();
-
-
         // Simplification: Using a GridView instead of a RecyclerView
         GridView gridView = findViewById(R.id.movies_gridview);
+
+        makeMovieQuery();
 
         // Create a new adapter that takes an empty list of movies as input
         movieAdapter = new MovieAdapter(this, movies);
@@ -46,6 +45,10 @@ public class MovieOverview extends AppCompatActivity {
                 launchDetailActivity(position);
             }
         });
+    }
+
+    private void updateList(List movies) {
+        movieAdapter.setMovieData(movies);
     }
 
 
@@ -72,6 +75,7 @@ public class MovieOverview extends AppCompatActivity {
             mContext = context;
         }
 
+
         @Override
         protected String doInBackground(URL... params) {
             URL searchUrl = params[0];
@@ -88,9 +92,13 @@ public class MovieOverview extends AppCompatActivity {
         protected void onPostExecute(String movieQueryResults) {
             if (movieQueryResults != null && !movieQueryResults.equals("")) {
                 try {
-                    List<Movie> movies = JSONUtils.getMovieDetailsFromJson(movieQueryResults);
-                    MovieAdapter movieAdapter = new MovieAdapter(mContext, movies);
+                    movies = JSONUtils.getMovieDetailsFromJson(movieQueryResults);
                     movieAdapter.setMovieData(movies);
+                    if (mContext instanceof MovieOverview) {
+                        ((MovieOverview) mContext).updateList(movies);
+                    } else {
+                        //Log the event here
+                    }
 
                 } catch (JSONException e) {
                     e.printStackTrace();

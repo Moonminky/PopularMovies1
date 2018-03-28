@@ -10,7 +10,6 @@ import org.json.JSONObject;
 
 import java.net.HttpURLConnection;
 import java.util.ArrayList;
-import java.util.List;
 
 public class JSONUtils {
 
@@ -21,11 +20,11 @@ public class JSONUtils {
     private static final String MOVIE_VOTE_AVERAGE = "vote_average";
     private static final String MOVIE_RELEASE_DATE = "release_date";
 
-    public static List<Movie> getMovieDetailsFromJson(String movieJsonString)
+    public static ArrayList<Movie> getMovieDetailsFromJson(String movieJsonString)
             throws JSONException {
 
 
-        List<Movie> moviesList = new ArrayList<>();
+        ArrayList<Movie> moviesList = new ArrayList<>();
         try {
             JSONObject baseMoviesJson = new JSONObject(movieJsonString);
             JSONArray moviesJsonArray = baseMoviesJson.getJSONArray(MOVIE_LIST);
@@ -36,7 +35,8 @@ public class JSONUtils {
                 Double voteAverage = currentMovie.getDouble(MOVIE_VOTE_AVERAGE);
                 String moviePlot = currentMovie.getString(MOVIE_PLOT);
                 String movieReleaseDate = currentMovie.getString(MOVIE_RELEASE_DATE);
-                String moviePoster = currentMovie.getString(MOVIE_POSTER);
+                String moviePosterString = currentMovie.getString(MOVIE_POSTER);
+                String moviePoster = moviePosterString.substring(1);
 
                 Movie movie = new Movie(movieTitle,
                         movieReleaseDate, moviePoster, voteAverage, moviePlot);

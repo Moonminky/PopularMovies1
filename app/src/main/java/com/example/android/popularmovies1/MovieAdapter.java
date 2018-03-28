@@ -14,6 +14,7 @@ import com.example.android.popularmovies1.Utils.NetworkUtils;
 import com.squareup.picasso.Picasso;
 
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -22,23 +23,30 @@ import java.util.List;
 
 public class MovieAdapter extends ArrayAdapter<Movie> {
 
-    private List<Movie> mMovieData;
 
-    public MovieAdapter(Context context, List<Movie> moviesList){
-        super (context,0, moviesList);
+
+    Context mContext;
+    private ArrayList<Movie> mMovieData;
+
+    public MovieAdapter(Context context, ArrayList<Movie> moviesList) {
+
+        super(context, R.layout.movie_list_item, moviesList);
+        this.mContext = context;
+        this.mMovieData = moviesList;
+        Log.d("MovieAdapterTag", "MovieAdapter: " + moviesList);
     }
 
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-        Context context = getContext();
-        Movie movie = getItem(position);
+        mContext = getContext();
+        Movie movie = mMovieData.get(position);
 
         // Check if there is an existing list item view (called convertView) that we can reuse,
         // otherwise, if convertView is null, then inflate a new list item layout.
         View listItemView = convertView;
         if (listItemView == null) {
-            listItemView = LayoutInflater.from(getContext()).inflate(
+            listItemView = LayoutInflater.from(mContext).inflate(
                     R.layout.movie_list_item, parent, false);
         }
 
@@ -47,7 +55,7 @@ public class MovieAdapter extends ArrayAdapter<Movie> {
         URL imageUrl = NetworkUtils.imageURL(movie.getMoviePoster());
         Log.v("imageURL", "Built URI " + imageUrl);
         String image = imageUrl.toString();
-        Picasso.with(context).load(image).into(imageView);
+        Picasso.with(mContext).load(image).into(imageView);
 
         return listItemView;
     }
@@ -60,7 +68,13 @@ public class MovieAdapter extends ArrayAdapter<Movie> {
      * @param movieData The new movie data to be displayed.
      */
     public void setMovieData(List<Movie> movieData) {
-        mMovieData = movieData;
+        clear();
+        addAll(movieData);
         notifyDataSetChanged();
+    }
+
+    @Override public int getCount() {
+        Log.d("DisplayCount", "getCount: " + mMovieData);
+        return mMovieData == null ? 0 : mMovieData.size();
     }
 }

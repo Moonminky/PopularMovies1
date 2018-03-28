@@ -21,7 +21,6 @@ public class NetworkUtils {
     final static String SORT_BY_POPULARITY = "popular/";
     final static String SORT_BY_RATING = "top_rated/";
     //API key in the format: final static String API_KEY="[YOUR API KEY HERE]";
-    
     final static String API_KEY_PARAM = "api_key";
     private static final String TAG = NetworkUtils.class.getSimpleName();
 
@@ -45,7 +44,7 @@ public class NetworkUtils {
     public static URL imageURL(String image) {
         Uri builtUri = Uri.parse(IMAGE_BASE_URL).buildUpon()
                 .appendEncodedPath(IMAGE_SIZE)
-                .appendPath(image)
+                .appendEncodedPath(image)
                 .build();
 
         URL url = null;
