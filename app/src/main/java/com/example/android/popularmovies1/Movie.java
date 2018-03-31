@@ -1,10 +1,10 @@
 package com.example.android.popularmovies1;
 
-/**
- * Movie class with title, release date, movie poster, vote average, and plot synopsis
- */
+import java.io.Serializable;
 
-public class Movie {
+// Movie class with title, release date, movie poster, vote average, and plot synopsis
+
+public class Movie implements Serializable {
 
     private String title;
     private String releaseDate;
@@ -33,7 +33,7 @@ public class Movie {
         return releaseDate;
     }
 
-    public void setReleaseDate(String title) {
+    public void setReleaseDate(String releaseDate) {
         this.releaseDate = releaseDate;
     }
 

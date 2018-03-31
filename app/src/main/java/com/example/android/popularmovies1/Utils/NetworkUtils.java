@@ -1,7 +1,6 @@
 package com.example.android.popularmovies1.Utils;
 
 import android.net.Uri;
-import android.util.Log;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -15,14 +14,12 @@ import java.util.Scanner;
  */
 
 public class NetworkUtils {
-    final static String MOVIE_BASE_URL = "https://api.themoviedb.org/3/movie/";
-    final static String IMAGE_BASE_URL = " http://image.tmdb.org/t/p/";
-    final static String IMAGE_SIZE = "w185";
-    final static String SORT_BY_POPULARITY = "popular/";
-    final static String SORT_BY_RATING = "top_rated/";
+    private final static String MOVIE_BASE_URL = "https://api.themoviedb.org/3/movie/";
+    private final static String IMAGE_BASE_URL = " http://image.tmdb.org/t/p/";
+    private final static String IMAGE_SIZE = "w185";
     //API key in the format: final static String API_KEY="[YOUR API KEY HERE]";
-    final static String API_KEY_PARAM = "api_key";
-    private static final String TAG = NetworkUtils.class.getSimpleName();
+    private final static String API_KEY="b6abf8ab6c6a3d5db06ceadea1b48610";
+    private final static String API_KEY_PARAM = "api_key";
 
     public static URL buildURL(String sortedBy) {
         Uri builtUri = Uri.parse(MOVIE_BASE_URL).buildUpon()
@@ -37,7 +34,6 @@ public class NetworkUtils {
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }
-        Log.v(TAG, "Built URI " + url);
 
         return url;
     }
@@ -54,7 +50,6 @@ public class NetworkUtils {
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }
-        Log.v(TAG, "Built URI " + url);
 
         return url;
     }

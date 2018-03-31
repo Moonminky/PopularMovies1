@@ -20,8 +20,7 @@ public class JSONUtils {
     private static final String MOVIE_VOTE_AVERAGE = "vote_average";
     private static final String MOVIE_RELEASE_DATE = "release_date";
 
-    public static ArrayList<Movie> getMovieDetailsFromJson(String movieJsonString)
-            throws JSONException {
+    public static ArrayList<Movie> getMovieDetailsFromJson(String movieJsonString) {
 
 
         ArrayList<Movie> moviesList = new ArrayList<>();

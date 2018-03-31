@@ -1,9 +1,122 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".DetailActivity">
+    android:layout_height="wrap_content">
 
-</android.support.constraint.ConstraintLayout>
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/constraintLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp">
+
+
+        <ImageView
+            android:id="@+id/moviePoster_content"
+            android:layout_width="185dp"
+            android:layout_height="278dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginTop="8dp"
+            android:contentDescription="@string/movie_poster"
+            app:layout_constraintBottom_toTopOf="@id/plot_title"
+            app:layout_constraintHorizontal_weight="1"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/title_title"
+            style="@style/detailActivity_titleStyle"
+            android:maxLines="2"
+            android:text="@string/title"
+            app:layout_constraintBottom_toTopOf="@id/title_content"
+            app:layout_constraintHorizontal_weight="1"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@id/moviePoster_content"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/title_content"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:maxLines="3"
+            app:layout_constraintBottom_toTopOf="@id/releaseDate_title"
+            app:layout_constraintHorizontal_weight="1"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@id/moviePoster_content"
+            app:layout_constraintTop_toBottomOf="@id/title_title"
+            tools:text="Title" />
+
+        <TextView
+            android:id="@+id/releaseDate_title"
+            style="@style/detailActivity_titleStyle"
+            android:text="@string/releaseDate"
+            app:layout_constraintBottom_toTopOf="@id/releaseDate_content"
+            app:layout_constraintHorizontal_weight="1"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@id/moviePoster_content"
+            app:layout_constraintTop_toBottomOf="@id/title_content" />
+
+        <TextView
+            android:id="@+id/releaseDate_content"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            app:layout_constraintBottom_toTopOf="@id/voteAverage_title"
+            app:layout_constraintHorizontal_weight="1"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@id/moviePoster_content"
+            app:layout_constraintTop_toBottomOf="@id/releaseDate_title"
+            tools:text="Release Date content" />
+
+        <TextView
+            android:id="@+id/voteAverage_title"
+            style="@style/detailActivity_titleStyle"
+            android:layout_marginBottom="8dp"
+            android:text="@string/voteAverage"
+            app:layout_constraintBottom_toTopOf="@id/voteAverage_content"
+            app:layout_constraintHorizontal_weight="1"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@id/moviePoster_content"
+            app:layout_constraintTop_toBottomOf="@id/releaseDate_content" />
+
+        <TextView
+            android:id="@+id/voteAverage_content"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="@id/moviePoster_content"
+            app:layout_constraintHorizontal_weight="1"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@id/moviePoster_content"
+            app:layout_constraintTop_toBottomOf="@id/voteAverage_title"
+            tools:text="voteAverage content" />
+
+        <TextView
+            android:id="@+id/plot_title"
+            style="@style/detailActivity_titleStyle"
+            android:text="@string/plot"
+            app:layout_constraintBottom_toTopOf="@id/plot_content"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/moviePoster_content" />
+
+        <TextView
+            android:id="@+id/plot_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/plot_title"
+            tools:text="plot content" />
+
+
+    </android.support.constraint.ConstraintLayout>
+</ScrollView>
+
+
+

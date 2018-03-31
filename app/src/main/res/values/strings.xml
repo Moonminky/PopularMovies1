@@ -1,4 +1,31 @@
 <resources>
     <string name="app_name">PopularMovies1</string>
     <string name="detail_error_message">Movie data not available</string>
+
+    <!-- String resources for Detail Activity -->
+    <string name="title">Title</string>
+    <string name="releaseDate">Release date</string>
+    <string name="voteAverage">Average Rating</string>
+    <string name="plot">Plot</string>
+
+    <string name="noValue">There is no data for this</string>
+
+    <!-- String resources for settings -->
+    <string name="settings_title">Settings</string>
+    <string name="settings_order_by_default">@string/settings_order_by_popularity_value</string>
+
+    <string name="settings_order_by_key">order_by</string>
+    <string name="settings_order_by_label">Order By</string>
+
+    <!-- Label for order-by popularity option -->
+    <string name="settings_order_by_popularity_label">Popularity</string>
+    <string name="settings_order_by_popularity_value" translatable="false">popular</string>
+
+    <!-- Label for order-by rating option-->
+    <string name="settings_order_by_rating_label">Top Rating</string>
+    <string name="settings_order_by_rating_value" translatable="false">top_rated</string>
+    <string name="no_internet">Oops. Seems like there is no internet connection.</string>
+    <string name="no_movies">Oh no! Seems like there are no movies.</string>
+    <string name="movie_poster">movie poster</string>
+
 </resources>
