@@ -18,7 +18,6 @@ public class NetworkUtils {
     private final static String IMAGE_BASE_URL = " http://image.tmdb.org/t/p/";
     private final static String IMAGE_SIZE = "w185";
     //API key in the format: final static String API_KEY="[YOUR API KEY HERE]";
-    private final static String API_KEY="b6abf8ab6c6a3d5db06ceadea1b48610";
     private final static String API_KEY_PARAM = "api_key";
 
     public static URL buildURL(String sortedBy) {
